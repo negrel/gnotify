@@ -1,0 +1,3 @@
+[submodule "examples/timer"]
+	path = examples/timer
+	url = https://github.com/negrel/timer.git
