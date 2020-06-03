@@ -6,10 +6,29 @@ package gnotify
 // Renotify option is set to true.
 type Tag string
 
-// NotificationOption is a custom object that contain setting that
+// ActionList is a list of notification
+// action.
+type ActionList map[string]func()
+
+// format action list for dbus
+func (al ActionList) dbusFmt() []string {
+	result := make([]string, 0, len(al)*2)
+
+	for name := range al {
+		result = append(result, name, name)
+	}
+
+	return result
+}
+
+func (al ActionList) handle(key string) {
+	al[key]()
+}
+
+// Option is a custom object that contain setting that
 // you want to apply to the notification.
-type NotificationOption struct {
-	title string
+type Option struct {
+	Title string
 
 	// The URL of the image used to represent the notification
 	// when there isn't enough space to display the
@@ -29,10 +48,6 @@ type NotificationOption struct {
 	// The URL of an image to be displayed as part of the notification.
 	Image string
 
-	// Renotify specify whether this notification should
-	// replace the previous one.
-	Renotify bool
-
 	// The timeout time in milliseconds since the display of the notification
 	// at which the notification should automatically close.
 	ExpireTimeout int32
@@ -42,7 +57,10 @@ type NotificationOption struct {
 	// These are options the user can choose among in order
 	// to act on the action within the context of the notification
 	// itself.
-	Actions []NotificationAction
+	Actions ActionList
+
+	// OnClose is triggered when the notifcation is closed
+	OnClose func(CloseEvent)
 
 	// A Boolean specifying whether the notification is silent.
 	Silent bool
