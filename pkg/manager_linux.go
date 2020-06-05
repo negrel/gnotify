@@ -97,12 +97,15 @@ func (m *UnixManager) listenTo(ch <-chan *dbus.Signal) {
 }
 
 // Push the given notification to display it.
-func (m *UnixManager) Push(notif *Notification) {
+func (m *UnixManager) Push(notif *Notification) error {
+	notif.applyDefault()
+
 	call := m.busObj.Call(
 		prefix+".Notify",
 		0,
 		m.appName,
-		notif.id, // replace id
+		uint32(0),
+		// notif.id, // replace id
 		notif.Icon,
 		notif.Title,
 		notif.Body,
@@ -111,13 +114,19 @@ func (m *UnixManager) Push(notif *Notification) {
 		notif.ExpireTimeout,
 	)
 
-	if len(call.Body) > 0 {
-		id := call.Body[0].(uint32)
-
-		// Set the notification id
-		notif.id = id
-
-		// we keep only what we need.
-		m.actives[id] = notif
+	// dbus error
+	if call.Err != nil {
+		return call.Err
 	}
+
+	// if len(call.Body) > 0 {
+	// 	id := call.Body[0].(uint32)
+
+	// 	// we keep only what we need.
+	// 	m.actives[id] = notif
+
+	// 	return id, nil
+	// }
+
+	return nil
 }

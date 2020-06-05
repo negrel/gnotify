@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/negrel/gnotify"
+	gnotify "github.com/negrel/gnotify/pkg"
 )
 
 var manager gnotify.Manager
@@ -17,12 +17,14 @@ func init() {
 }
 
 func main() {
-	notif := gnotify.NewNotification(gnotify.Option{
+	notif := gnotify.Notification{
 		Title: "Hello",
 		Body:  "Gnotify is awesome.",
+		Icon:  "/home/negrel/Documents/cni_front.jpg",
+		Image: "/home/negrel/Documents/cni_back.jpg",
 		// Expire after 3 seconds.
 		ExpireTimeout: 3000,
-	})
+	}
 
-	manager.Push(notif)
+	manager.Push(&notif)
 }
