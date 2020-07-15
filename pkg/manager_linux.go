@@ -119,6 +119,7 @@ func (m *UnixManager) Push(notif *Notification) error {
 		return call.Err
 	}
 
+	// NOTE Replace id
 	// if len(call.Body) > 0 {
 	// 	id := call.Body[0].(uint32)
 
