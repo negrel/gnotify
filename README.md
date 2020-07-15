@@ -22,7 +22,9 @@ This project is no longer developed. Use [beeep](https://github.com/gen2brain/be
 
 ## Example
 
-This [timer](https://github.com/negrel/timer) is a CLI tool that use GNotify do display notifications.
+Checkout the [examples/](https://github.com/negrel/gnotify/tree/master/examples) folder for the following example:
+- **Hello world** notification.
+- [Timer](https://github.com/negrel/timer) CLI tool.
 
 ### Contributing
 If you want to contribute to Ginger to add a feature or improve the code contact me at [negrel.dev@protonmail.com](mailto:negrel.dev@protonmail.com), open an [issue](https://github.com/negrel/ginger/issues) or make a [pull request](https://github.com/negrel/ginger/pulls).
