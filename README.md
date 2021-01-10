@@ -27,7 +27,7 @@ Checkout the [examples/](https://github.com/negrel/gnotify/tree/master/examples)
 - [Timer](https://github.com/negrel/timer) CLI tool.
 
 ### Contributing
-If you want to contribute to Ginger to add a feature or improve the code contact me at [negrel.dev@protonmail.com](mailto:negrel.dev@protonmail.com), open an [issue](https://github.com/negrel/ginger/issues) or make a [pull request](https://github.com/negrel/ginger/pulls).
+If you want to contribute to Ginger to add a feature or improve the code contact me at [negrel.dev@protonmail.com](mailto:negrel.dev@protonmail.com), open an [issue](https://github.com/negrel/gnotify/issues) or make a [pull request](https://github.com/negrel/gnotify/pulls).
 
 ## :stars: Show your support
 Please give a :star: if this project helped you!
